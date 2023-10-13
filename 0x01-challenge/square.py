@@ -1,37 +1,66 @@
 #!/usr/bin/python3
-"""Square class."""
+"""Class Square"""
 
 
 class Square():
-    """Square class."""
+    """Class Square"""
 
     width = 0
     height = 0
 
     def __init__(self, *args, **kwargs):
-        """__init__ constructor."""
-        for key, value in kwargs.items():
-            setattr(self, key, value)
+        """initialize square instance with width and height"""
+        if kwargs:
+            for key, value in kwargs.items():
+                setattr(self, key, value)
+            if 'width' in kwargs.keys() and self.height != self.width:
+                self.height = self.width
+            if 'height' in kwargs.keys() and self.width != self.height:
+                self.width = self.height
 
-        if self.width == 0 and self.height != 0:
-            self.width = self.height
-
-    def area_of_my_square(self):
-        """Area of the square."""
+    def area(self):
+        """ Return area of the square """
         return self.width * self.width
 
-    def PermiterOfMySquare(self):
-        """Permiter of the square."""
-        return (self.width * 2) + (self.width * 2)
+    def perimeter(self):
+        """ Return perimeter of the square """
+        return (self.width * 2) + (self.height * 2)
 
     def __str__(self):
-        """Represent the square."""
-        return "{}/{}".format(self.width, self.width)
+        """ Return string representation """
+        return "{}/{}".format(self.width, self.height)
 
 
 if __name__ == "__main__":
 
     s = Square(width=12, height=9)
     print(s)
-    print(s.area_of_my_square())
-    print(s.PermiterOfMySquare())
+    print(s.width)
+    print(s.height)
+    print(s.area())
+    print(s.perimeter())
+    print(s.__str__())
+    print("--------------------------------")
+    q = Square(width=2)
+    print(q)
+    print(q.width)
+    print(q.height)
+    print(q.area())
+    print(q.perimeter())
+    print(q.__str__())
+    print("--------------------------------")
+    u = Square(height=3)
+    print(u)
+    print(u.width)
+    print(u.height)
+    print(u.area())
+    print(u.perimeter())
+    print(u.__str__())
+    print("--------------------------------")
+    a = Square()
+    print(a)
+    print(a.width)
+    print(a.height)
+    print(a.area())
+    print(a.perimeter())
+    print(a.__str__())
